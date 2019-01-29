@@ -1,0 +1,30 @@
+.signUpButton{
+    color:black;
+}
+
+.registerModal {
+    display: grid;
+}
+
+.xButton {
+    color:black;
+    font-weight: 900;
+    font-size: 5vh;
+}
+
+.userInputTitle{
+    color:black;
+    font-weight: 900;
+    font-size: 4vh;
+}
+
+.doneButton{
+    color:black;
+    font-weight: 900;
+    font-size: 3vh;
+}
+.informationInupt {
+    border-radius: 5px;  
+    font-weight: 900;
+    font-size: 4vh;
+}

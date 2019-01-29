@@ -3,8 +3,11 @@
 import React from 'react';
 
 import Modal from 'react-modal';
+import './register.css'
+// import { groupPatternsByBaseDirectory } from 'fast-glob/out/managers/tasks';
  
 const customStyles = {
+
   content : {
     top                   : '50%',
     left                  : '50%',
@@ -18,18 +21,26 @@ const customStyles = {
 Modal.setAppElement('#root')
  
 class Register extends React.Component {
-  constructor() {
-    super();
+
+  
+  constructor(props) {
+    super(props);
  
     this.state = {
-      modalIsOpen: false
+      modalIsOpen: false,
+      firstname: '',
+      lastname: '',
+      username: '',
+      password: '',
+      email: '',
+      zipcode: '',
     };
  
     this.openModal = this.openModal.bind(this);
     this.afterOpenModal = this.afterOpenModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
   }
- 
+  
   openModal() {
     this.setState({modalIsOpen: true});
   }
@@ -46,38 +57,56 @@ class Register extends React.Component {
   render() {
     return (
       <div>
-        <button onClick={this.openModal}>Sign Up</button>
-        <Modal
+        <button className="signUpButton" onClick={this.openModal}>Sign Up</button>
+        <Modal 
           isOpen={this.state.modalIsOpen}
           onAfterOpen={this.afterOpenModal}
           onRequestClose={this.closeModal}
           style={customStyles}
           contentLabel="Example Modal"
         >
-          <button onClick={this.closeModal}>x</button>
+        <div className="registerModal">
+          <button className="xButton" onClick={this.closeModal}>x</button>
           <h2 ref={subtitle => this.subtitle = subtitle}>Start your treasure hunting journey!</h2>
          
           <form>
-            First Name
-            <input />  
-            Username
-            <input />
+           <div className="userInputTitle">First Name:</div> 
+            <input  className="informationInupt"
+                    placeholder="Gold"
+             
+                    onChange={(event, newValue) => this.setState({ firstname: newValue })}/>  
+            <div className="userInputTitle">Username:</div>
+            <input  className="informationInupt"
+                    placeholder="KingOfThePirates"
+               
+                    onChange={(event, newValue) => this.setState({ username: newValue })}/>
             <br />
-            Last Name
-            <input />
-            Password
-            <input />
+            <div className="userInputTitle">Last Name:</div>
+            <input className="informationInupt"
+                    placeholder="Roger"
+                    onChange={(event, newValue) => this.setState({ lastname: newValue })}/>
+            <div className="userInputTitle">Password:</div>
+            <input className="informationInupt"
+                    placeholder="LettersAnd123And!"
+                 
+                    onChange={(event, newValue) => this.setState({ password: newValue })}/>
             <br />
-            Email
-            <input />
-            Zip Code
-            <input />
+            <div className="userInputTitle">Email:</div>
+            <input className="informationInupt"
+                    placeholder="golddroger@gmail.com"
+                  
+                    onChange={(event, newValue) => this.setState({ email: newValue })} />
+            <div className="userInputTitle">ZIP Code:</div>
+            <input className="informationInupt"
+                    placeholder="00000"
+           
+                    onChange={(event, newValue) => this.setState({ zipcode: newValue })} />
             <br />
 
-            <button>Done</button>
+            <button className="doneButton">Done</button>
          
           </form>
-         
+         </div>
         </Modal>
       </div>
     );
